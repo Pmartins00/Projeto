@@ -1,0 +1,59 @@
+@CHARSET "ISO-8859-1";
+
+#header, #footer {
+	background-color: #4a4a4a;
+	color: #FFFFFF;
+	min-height: 80px;
+	border-top: 6px solid #942019;
+	border-bottom: 6px solid #942019;
+}
+
+.car img {
+	width: 350px;
+	height: 500px;
+}
+
+.con-img {
+	margin-top: 3px;
+	height: 500px;
+	border: none;
+}
+
+#corpo {
+	
+}
+
+.logo {
+	font-family: serif;
+	font-weight: bold;
+	font-size: 40px;
+}
+
+.conteudo-8 {
+	min-height: 500px;
+}
+
+.conteudo-8 {
+	min-height: 500px;
+}
+
+.login {
+	margin-top: 20px;
+}
+
+.login input {
+	width: 300px;
+}
+
+.login fieldset {
+	border-radius: 10px;
+	border: 2px solid;
+}
+
+.footer {
+	height: 60px;
+	font-family: serif;
+	font-weight: bold;
+	text-align: center;
+}
+

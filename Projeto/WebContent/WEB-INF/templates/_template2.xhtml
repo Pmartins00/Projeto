@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	
+	<title>CoAutores</title>
+	<h:outputScript name="jsf.js" library="javax.faces" target="head"/>
+	<h:outputScript name="jquery-1.10.2.js" library="js" target="head"/>
+	
+	<h:outputScript name="bootstrap.min.js" library="dist/js" target="head"/>
+	<h:outputStylesheet name="bootstrap.min.css" library="dist/css"/>
+	<h:outputStylesheet name="app.css" library="css"/>
+	
+</h:head>
+
+<h:body>
+	
+	<div id="header">
+	<div class="row">
+		<div class="container">
+			<div class="col-md-12 logo">
+				CoAutores
+			</div>
+		</div>
+	</div>
+	</div>
+	
+	<div id="corpo">
+	<div class="row">
+		<div class="container">
+			
+			<div class="col-md-8 conteudo-8">
+				<h:form>
+				<p:menubar styleClass="menu">
+						<p:menuitem value="Inicio"/>
+						<p:menuitem value="Textos"/>
+						<p:menuitem value="Pessoas"/>
+						<p:menuitem value="Livros"/>
+						<p:menuitem value="Perfil"/>
+						<p:menuitem value="Sair" action="#{loginBean.logout}"/>
+					</p:menubar>
+				</h:form>
+			
+				<ui:insert name="corpo1"/>
+
+			</div>
+			
+			<div class="col-md-4 conteudo-4">
+				<ui:insert name="corpo2"/>
+			</div>
+		
+		</div>
+	</div>
+	</div>
+	
+	<div id="footer">
+	<div class="row">
+		<div class="container">
+			<div class="col-md-12 footer">
+					
+					<br/>
+					<p:outputLabel value="Copyright © 2014"/>
+	
+			</div>
+		</div>
+	</div>
+	</div>
+	
+</h:body>
+</html>

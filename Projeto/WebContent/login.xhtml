@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+	
+	
+	<ui:composition template="/WEB-INF/templates/_template.xhtml">
+	
+		<ui:define name="corpo1">
+			
+			<p:contentFlow rendered="true" styleClass="con-img" style="height:500px" value="#{imageViewBean.images}" var="image">
+			    <p:graphicImage library="imagens" name="#{image}" styleClass="content" />
+			    <div class="caption">#{image}</div>
+			</p:contentFlow>
+		
+		</ui:define>
+	
+		<ui:define name="corpo2">
+			
+			<div class="login">
+				<h:form id="login">
+				<p:fieldset legend="Login">
+					<h:messages/>
+					<h:panelGrid columns="1">
+						<p:outputLabel value="Login" for="login"/>
+						<p:inputText value="#{loginBean.usuario.login}" id="login"/>
+						
+						<p:outputLabel value="Senha:" for="senha"/>
+						<p:inputText value="#{loginBean.usuario.senha}" type="password" id="senha"/>
+						
+						<p:outputLabel/>
+						<p:commandButton action="#{loginBean.autentica}" value="Entrar"/>
+						
+						<p:outputLabel/>
+						<p:commandLink value="Esqueceu o login?"/>
+						
+						<p:commandLink value="Esqueceu a senha?"/>
+						
+						<p:outputLabel/>
+						<p:commandButton value="Cadastre-se"/>
+						
+					</h:panelGrid>
+				</p:fieldset>	
+				</h:form>
+			</div>
+			
+		</ui:define>
+		
+	</ui:composition>
+
+</h:body>
+</html>
