@@ -10,12 +10,19 @@
 <h:head>
 	
 	<title>CoAutores</title>
-	<h:outputScript name="jsf.js" library="javax.faces" target="head"/>
-	<h:outputScript name="jquery-1.10.2.js" library="js" target="head"/>
 	
-	<h:outputScript name="bootstrap.min.js" library="dist/js" target="head"/>
-	<h:outputStylesheet name="bootstrap.min.css" library="dist/css"/>
+	<h:outputStylesheet name="bootstrap.css" library="dist/css"/>
 	<h:outputStylesheet name="app.css" library="css"/>
+	
+	<h:outputText value="&lt;!--[if lt IE 9]&gt;" escape="false" />
+		<h:outputScript name="html5shiv.js" library="dist/js"/>
+		<h:outputScript name="respond.min.js" library="dist/js"/>
+	<h:outputText value="&lt;![endif]--&gt;" escape="false" />
+
+	
+	<h:outputScript name="bootstrap.js" library="dist/js"/>
+	<h:outputScript name="locale.js" library="js"/>
+	<h:outputScript name="jsf.js" library="javax.faces" target="head"/>
 	
 </h:head>
 
