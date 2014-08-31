@@ -8,6 +8,11 @@ version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
 	<provider>org.hibernate.ejb.HibernatePersistence</provider> 
 	
 	<class>br.com.notasfiscais.model.Usuario</class>
+	<class>br.com.notasfiscais.model.Tema</class>
+	<class>br.com.notasfiscais.model.Categoria</class>
+	<class>br.com.notasfiscais.model.Autor</class>
+	<class>br.com.notasfiscais.model.Endereco</class>
+	<class>br.com.notasfiscais.model.Editora</class>
 
 	<properties> 
 		

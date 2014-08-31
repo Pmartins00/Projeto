@@ -118,7 +118,6 @@
 			<artifactId>weld-core</artifactId>
 			<version>2.2.4.Final</version>
 		</dependency>
-        
 
         <!-- FIM WELD CONFIG -->
   </dependencies>

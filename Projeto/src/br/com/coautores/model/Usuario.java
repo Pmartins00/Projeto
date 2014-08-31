@@ -1,12 +1,15 @@
 package br.com.coautores.model;
 
 import java.io.Serializable;
+import java.util.Calendar;
+import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
-import org.hibernate.validator.constraints.NotEmpty;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Usuario implements Serializable {
@@ -14,11 +17,35 @@ public class Usuario implements Serializable {
 	@Id @GeneratedValue
 	private Long id;
 	
-	@NotEmpty(message="Preencha o campo login corretamente!")
+	@Column(name="cslogin")
 	private String login;
 	
-	@NotEmpty(message="Preencha o campo senha corretamente!")
+	@Column(name="cssenha")
 	private String senha;
+	
+	@Column(name="csnome")
+	private String nome;
+	
+	@Column(name="csemail")
+	private String email;
+	
+	@Column(name="csimagem")
+	private String imagem;
+	
+	@Column(name="cddataNascimento")
+	private Calendar dataNascimento;
+	
+	@Column(name="cscelular")
+	private String celular;
+	
+	@Column(name="csperfil")
+	private String perfil;
+	
+	@OneToMany(cascade=CascadeType.PERSIST)
+	private List<Ebook> ebook;
+	
+	@OneToMany(cascade=CascadeType.PERSIST)
+	private List<Tema> tema;
 	
 	public Long getId() {
 		return id;
@@ -42,6 +69,70 @@ public class Usuario implements Serializable {
 	
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
+	}
+
+	public Calendar getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(Calendar dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
+	public String getCelular() {
+		return celular;
+	}
+
+	public void setCelular(String celular) {
+		this.celular = celular;
+	}
+
+	public String getPerfil() {
+		return perfil;
+	}
+
+	public void setPerfil(String perfil) {
+		this.perfil = perfil;
+	}
+
+	public List<Ebook> getEbook() {
+		return ebook;
+	}
+
+	public void setEbook(List<Ebook> ebook) {
+		this.ebook = ebook;
+	}
+
+	public List<Tema> getTema() {
+		return tema;
+	}
+
+	public void setTema(List<Tema> tema) {
+		this.tema = tema;
 	}
 	
 }
