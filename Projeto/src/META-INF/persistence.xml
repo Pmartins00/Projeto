@@ -13,6 +13,10 @@ version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
 	<class>br.com.notasfiscais.model.Autor</class>
 	<class>br.com.notasfiscais.model.Endereco</class>
 	<class>br.com.notasfiscais.model.Editora</class>
+	<class>br.com.notasfiscais.model.Ebook</class>
+	<class>br.com.notasfiscais.model.Paragrafo</class>
+	<class>br.com.notasfiscais.model.Sugestao</class>
+	<class>br.com.notasfiscais.model.Texto</class>
 
 	<properties> 
 		
