@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:body>
+
+	<ui:composition template="/WEB-INF/templates/_template.xhtml">
+
+		<ui:define name="titulo">CoAutores - Perfil</ui:define>
+
+		<ui:define name="corpo">
+		<p:outputPanel rendered="#{loginBean.logado}">
+		
+			<div class="col-md-4">
+
+				<div class="panel-interno">
+
+					<p:panelGrid styleClass="panel-geral" columns="2" rules="groups"
+						columnClasses="pr30, pr70" align="center">
+
+						<p:outputLabel styleClass="t" value="Meus Dados" />
+						<p:outputLabel value="Editar" />
+
+						<p:graphicImage name="img1.jpg" library="imagens" width="125" height="150" />
+						<p:outputLabel value="" />
+
+						<p:outputLabel value="Nome" />
+						<p:outputLabel value="#{loginBean.usuario.nome}" />
+
+						<p:outputLabel value="E-mail" />
+						<p:outputLabel value="#{loginBean.usuario.email}" />
+
+						<p:outputLabel value="Data Nascimento:" />
+						<p:outputLabel value="#{loginBean.usuario.dataNascimento}" />
+
+						<p:outputLabel value="Celular" />
+						<p:outputLabel value="#{loginBean.usuario.celular}" />
+
+					</p:panelGrid>
+
+				</div>
+
+			</div>
+
+			<div class="col-md-8">
+
+				<div class="panel-interno">
+
+					<h:form>
+
+						<p:accordionPanel>
+							<p:tab title="Meus Textos">
+								<p:outputLabel styleClass="lbl">
+									<a class="btn btn01" href="novo-texto.xhtml">Novo Texto</a>
+								</p:outputLabel>
+								<h:panelGrid styleClass="panel-geral" columns="4" cellpadding="10">
+									<p:graphicImage name="img1.jpg" library="imagens" width="125" height="150" />
+									<p:graphicImage name="img1.jpg" library="imagens" width="125" height="150" />
+									<p:graphicImage name="img1.jpg" library="imagens" width="125" height="150" />
+									<p:graphicImage name="img1.jpg" library="imagens" width="125" height="150" />
+									<p:graphicImage name="img1.jpg" library="imagens" width="125" height="150" />
+									<p:graphicImage name="img1.jpg" library="imagens" width="125" height="150" />
+								</h:panelGrid>
+							</p:tab>
+							<p:tab title="Temas Favoritos">
+								<p:outputLabel styleClass="lbl">
+									<a class="btn btn01" href="sugestao.xhtml">Sugerir Tema</a>
+								</p:outputLabel>
+								<h:panelGrid styleClass="panel-geral" columns="4" cellpadding="10">
+									<p:graphicImage name="img1.jpg" library="imagens" width="125" height="150" />
+									<p:graphicImage name="img1.jpg" library="imagens" width="125" height="150" />
+									<p:graphicImage name="img1.jpg" library="imagens" width="125" height="150" />
+									<p:graphicImage name="img1.jpg" library="imagens" width="125" height="150" />
+									<p:graphicImage name="img1.jpg" library="imagens" width="125" height="150" />
+									<p:graphicImage name="img1.jpg" library="imagens" width="125" height="150" />
+								</h:panelGrid>
+							</p:tab>
+							<p:tab title="E-books Favoritos">
+								<p:outputLabel styleClass="lbl">
+									<a class="btn btn01" href="novo-ebook.xhtml">Novo E-book</a>
+								</p:outputLabel>
+								<h:panelGrid styleClass="panel-geral" columns="4" cellpadding="10">
+									<p:graphicImage name="img1.jpg" library="imagens" width="125" height="150" />
+									<p:graphicImage name="img1.jpg" library="imagens" width="125" height="150" />
+									<p:graphicImage name="img1.jpg" library="imagens" width="125" height="150" />
+									<p:graphicImage name="img1.jpg" library="imagens" width="125" height="150" />
+									<p:graphicImage name="img1.jpg" library="imagens" width="125" height="150" />
+									<p:graphicImage name="img1.jpg" library="imagens" width="125" height="150" />
+								</h:panelGrid>
+							</p:tab>
+						</p:accordionPanel>
+
+					</h:form>
+
+				</div>
+
+			</div>
+			
+		</p:outputPanel>
+		</ui:define>
+
+	</ui:composition>
+
+</h:body>
+</html>

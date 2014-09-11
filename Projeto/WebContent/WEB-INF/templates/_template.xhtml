@@ -12,7 +12,7 @@
 </head>
 <h:head>
 	
-	<title>CoAutores</title>
+	<title><ui:insert name="titulo">Co-Autores</ui:insert></title>
 	
 	<h:outputStylesheet name="bootstrap.css" library="dist/css"/>
 	<h:outputStylesheet name="app.css" library="css"/>
@@ -33,23 +33,40 @@
 	
 	<div id="header">
 		<div class="container">
-			<div class="col-md-12 logo">
+			<div class="col-md-2 logo">
 				CoAutores
 			</div>
+			<div class="col-md-8 menu">
+				
+				<h:form>
+					<p:menubar>
+						<p:menuitem value="Inicio" outcome="home.xhtml"/>
+						<p:menuitem value="E-books" outcome="ebooks.xhtml"/>
+						<p:menuitem value="Textos" outcome="textos.xhtml"/>
+						<p:menuitem value="Sair" rendered="#{loginBean.logado}" action="#{loginBean.logout()}"/>
+					</p:menubar>
+				</h:form>
+				
+			</div>
+			
+			<div class="col-md-1">
+				<p:outputLabel rendered="#{loginBean.logado}" id="not" />
+			</div>
+			<div class="col-md-1">
+				<a href="perfil.xhtml"><p:outputLabel rendered="#{loginBean.logado}" id="perfil" /></a>
+				<a href="login.xhtml"><p:outputLabel rendered="#{!loginBean.logado}" id="log" value="Login" /></a>
+			</div>
 		</div>
+		
 	</div>
 	
 	<div id="corpo">
 		<div class="container">
 			
-			<div class="col-md-8 conteudo-8">
+			<div class="row conteudo">
 				
-				<ui:insert name="corpo1"/>
+				<ui:insert name="corpo"/>
 
-			</div>
-			
-			<div class="col-md-4 conteudo-4">
-				<ui:insert name="corpo2"/>
 			</div>
 		
 		</div>
@@ -58,8 +75,7 @@
 	<div id="footer">
 		<div class="container">
 			<div class="col-md-12 footer">
-					
-					<br/>
+			
 					<p:outputLabel value="Copyright © 2014"/>
 	
 			</div>

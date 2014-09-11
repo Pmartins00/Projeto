@@ -1,9 +1,9 @@
 package br.com.coautores.model;
 
+import java.io.File;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -30,7 +30,7 @@ public class Usuario implements Serializable {
 	private String email;
 	
 	@Column(name="csimagem")
-	private String imagem;
+	private File imagem;
 	
 	@Column(name="cddataNascimento")
 	private Calendar dataNascimento;
@@ -40,6 +40,9 @@ public class Usuario implements Serializable {
 	
 	@Column(name="csperfil")
 	private String perfil;
+	
+	@Column(name="cbstatus")
+	private boolean status;
 	
 	@OneToMany(cascade=CascadeType.PERSIST)
 	private List<Ebook> ebook;
@@ -87,11 +90,11 @@ public class Usuario implements Serializable {
 		this.email = email;
 	}
 
-	public String getImagem() {
+	public File getImagem() {
 		return imagem;
 	}
 
-	public void setImagem(String imagem) {
+	public void setImagem(File imagem) {
 		this.imagem = imagem;
 	}
 
@@ -133,6 +136,14 @@ public class Usuario implements Serializable {
 
 	public void setTema(List<Tema> tema) {
 		this.tema = tema;
+	}
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
 	}
 	
 }

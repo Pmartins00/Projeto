@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<h:head></h:head>
+<h:body>
+	
+	
+	<ui:composition template="/WEB-INF/templates/_template.xhtml">
+		
+		<ui:define name="titulo">CoAutores - Novo Texto</ui:define>
+		
+		<ui:define name="corpo">
+			<div class="col-md-4">
+
+				<div class="panel-interno">
+					
+					<p:outputLabel styleClass="t" value="Foto da Capa" />
+					
+					<h:form>
+					    <p:fileUpload fileUploadListener="#{fileUploadView.handleFileUpload}" />
+					</h:form>
+					
+					<div class="panel-foto">
+					
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="col-md-8">
+
+				<div class="panel-interno">
+
+					<p:outputLabel styleClass="t" value="Cadastrar Texto" />
+					
+					<h:form>
+						<h:panelGrid styleClass="panel-geral" columns="1">
+							<p:inputText placeholder="Titulo"/>
+						</h:panelGrid>
+						
+						<h:panelGrid styleClass="panel-geral" columns="2">
+							<p:selectOneMenu style="width:350px;">
+								<f:selectItem itemLabel="Escolha a Categoria"/>
+							</p:selectOneMenu>
+							
+							<p:selectOneMenu style="width:350px;">
+								<f:selectItem itemLabel="Escolha o Tema"/>
+							</p:selectOneMenu>
+						</h:panelGrid>
+						
+						<h:panelGrid styleClass="panel-geral" columns="1">
+							<p:editor/>
+						</h:panelGrid>
+					</h:form>
+					
+					<div class="botao">
+					<p:commandButton styleClass="btn02" value="Cancelar"/>
+					<p:commandButton styleClass="btn03" value="Salvar"/>
+					</div>
+				</div>
+
+			</div>
+		</ui:define>
+		
+	</ui:composition>
+
+</h:body>
+</html>

@@ -1,5 +1,4 @@
 package br.com.coautores.model;
-import java.io.File;
 import java.util.Calendar;
 import java.util.List;
 
@@ -14,7 +13,6 @@ import javax.persistence.OneToOne;
 import br.com.coautores.model.Autor;
 import br.com.coautores.model.Editora;
 import br.com.coautores.model.Usuario;
-
 
 @Entity
 public class Ebook {
@@ -34,11 +32,14 @@ public class Ebook {
 	@Column(name="csidioma")
 	private String idioma;
 	
+	@Column(name="csimagem")
+	private String imagem;
+	
 	@OneToMany(cascade=CascadeType.PERSIST)
 	private List<Autor> autores;
 	
 	@Column(name="cffile")
-	private File file;
+	private String file;
 	
 	@Column(name="cddataCriacao")
 	private Calendar dataCriacao;
@@ -98,11 +99,11 @@ public class Ebook {
 		this.autores = autores;
 	}
 
-	public File getFile() {
+	public String getFile() {
 		return file;
 	}
 
-	public void setFile(File file) {
+	public void setFile(String file) {
 		this.file = file;
 	}
 
@@ -120,6 +121,14 @@ public class Ebook {
 
 	public void setDataUpdate(Calendar dataUpdate) {
 		this.dataUpdate = dataUpdate;
+	}
+
+	public String getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
 	}
 	
 }

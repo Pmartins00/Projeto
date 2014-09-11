@@ -8,5 +8,5 @@
      <lifecycle>
 		<phase-listener>br.com.coautores.listener.Autorizador</phase-listener>
 	</lifecycle>
-
+	
 </faces-config>

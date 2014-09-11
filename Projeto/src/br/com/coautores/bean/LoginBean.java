@@ -24,7 +24,7 @@ public class LoginBean implements Serializable {
 		
 		if (aut) {
 			System.out.println("sim");
-			return "index?faces-redirect=true";
+			return "home?faces-redirect=true";
 		} else {
 			return "login?faces-redirect=true";
 		}
@@ -37,6 +37,10 @@ public class LoginBean implements Serializable {
 	
 	public boolean isLogado() {
 		return this.usuario.getLogin() != null;
+	}
+	
+	public String page() {
+		return "login?faces-redirect=true";
 	}
 	
 	public String logout() {

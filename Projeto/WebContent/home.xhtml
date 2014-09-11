@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+<h:body>
+	
+	
+	<ui:composition template="/WEB-INF/templates/_template.xhtml">
+		
+		<ui:define name="titulo">CoAutores - Inicio</ui:define>
+		
+		<ui:define name="corpo">
+		
+			<div class="panel-home col-md-4">
+				
+				<div class="panel-interno">
+					
+					<p:outputLabel styleClass="t" value="Lançamentos"/>
+					
+					<h:form>
+						<h:panelGrid styleClass="panel-geral" columns="2" rules="groups" columnClasses="pr50, pr10" align="center">
+							
+							<p:inputText placeholder="Pesquisar" />
+							<p:commandButton value="Buscar"/>
+							
+						</h:panelGrid>
+					</h:form>
+					
+					<p:panelGrid styleClass="panel-geral" columns="2">
+					
+						<p:graphicImage name="img1.jpg" library="imagens" width="125" height="150" />
+						<p:graphicImage name="img1.jpg" library="imagens" width="125" height="150" />
+						<p:graphicImage name="img1.jpg" library="imagens" width="125" height="150" />
+						<p:graphicImage name="img1.jpg" library="imagens" width="125" height="150" />
+						<p:graphicImage name="img1.jpg" library="imagens" width="125" height="150" />
+						<p:graphicImage name="img1.jpg" library="imagens" width="125" height="150" />
+					
+					</p:panelGrid>
+					
+				</div>
+				
+			</div>
+			
+			<div class="panel-home col-md-8">
+			
+				<div class="panel-interno">
+					
+					<p:outputLabel styleClass="t" value="Destaques"/>
+					
+					<p:panelGrid styleClass="panel-geral" columns="4" rules="groups" columnClasses="pr20, pr30, pr20, pr30" align="center">
+					
+						<p:graphicImage name="img1.jpg" library="imagens" width="125" height="150" />
+						<p:outputLabel value="Descrição + Data"/>
+						
+						<p:graphicImage name="img1.jpg" library="imagens" width="125" height="150" />
+						<p:outputLabel value="Descrição + Data"/>
+						
+						<p:graphicImage name="img1.jpg" library="imagens" width="125" height="150" />
+						<p:outputLabel value="Descrição + Data"/>
+						
+						<p:graphicImage name="img1.jpg" library="imagens" width="125" height="150" />
+						<p:outputLabel value="Descrição + Data"/>
+						
+						<p:graphicImage name="img1.jpg" library="imagens" width="125" height="150" />
+						<p:outputLabel value="Descrição + Data"/>
+						
+						<p:graphicImage name="img1.jpg" library="imagens" width="125" height="150" />
+						<p:outputLabel value="Descrição + Data"/>
+					
+					</p:panelGrid>
+					
+				</div>
+
+			</div>
+			
+			
+		</ui:define>
+		
+	</ui:composition>
+
+</h:body>
+</html>

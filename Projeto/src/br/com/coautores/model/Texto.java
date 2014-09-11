@@ -20,6 +20,9 @@ public class Texto {
 	@Column(name="cstitulo")
 	private String titulo;
 	
+	@Column(name="csimagem")
+	private String imagem;
+	
 	@OneToOne(cascade = CascadeType.ALL)
 	private Categoria categoria;
 	
@@ -111,6 +114,14 @@ public class Texto {
 
 	public void setDataUpdate(Calendar dataUpdate) {
 		this.dataUpdate = dataUpdate;
+	}
+
+	public String getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
 	}
 	
 }

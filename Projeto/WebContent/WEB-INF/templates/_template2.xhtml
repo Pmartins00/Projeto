@@ -7,9 +7,12 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
+<head>
+	
+</head>
 <h:head>
 	
-	<title>CoAutores</title>
+	<title><ui:insert name="titulo">Co-Autores</ui:insert></title>
 	
 	<h:outputStylesheet name="bootstrap.css" library="dist/css"/>
 	<h:outputStylesheet name="app.css" library="css"/>
@@ -29,54 +32,51 @@
 <h:body>
 	
 	<div id="header">
-	<div class="row">
 		<div class="container">
-			<div class="col-md-12 logo">
+			<div class="col-md-2 logo">
 				CoAutores
 			</div>
+			<div class="col-md-8 menu">
+				
+				<h:form>
+					<p:menubar>
+						<p:menuitem value="Inicio" outcome="home.xhtml"/>
+						<p:menuitem value="E-books" outcome="ebooks.xhtml"/>
+						<p:menuitem value="Textos" outcome="textos.xhtml"/>
+						<p:menuitem value="Login" outcome="login.xhtml"/>
+						<p:menuitem value="Logout" action="#{loginBean.logout()}"/>
+					</p:menubar>
+				</h:form>
+				
+			</div>
+			<div id="not" class="col-md-1">
+			</div>
+			<div id="perfil" class="col-md-1">
+			</div>
 		</div>
-	</div>
+		
 	</div>
 	
 	<div id="corpo">
-	<div class="row">
 		<div class="container">
 			
-			<div class="col-md-8 conteudo-8">
-				<h:form>
-				<p:menubar styleClass="menu">
-						<p:menuitem value="Inicio"/>
-						<p:menuitem value="Textos"/>
-						<p:menuitem value="Pessoas"/>
-						<p:menuitem value="Livros"/>
-						<p:menuitem value="Perfil"/>
-						<p:menuitem value="Sair" action="#{loginBean.logout}"/>
-					</p:menubar>
-				</h:form>
-			
-				<ui:insert name="corpo1"/>
+			<div class="row conteudo">
+				
+				<ui:insert name="corpo"/>
 
-			</div>
-			
-			<div class="col-md-4 conteudo-4">
-				<ui:insert name="corpo2"/>
 			</div>
 		
 		</div>
 	</div>
-	</div>
 	
 	<div id="footer">
-	<div class="row">
 		<div class="container">
 			<div class="col-md-12 footer">
-					
-					<br/>
+			
 					<p:outputLabel value="Copyright © 2014"/>
 	
 			</div>
 		</div>
-	</div>
 	</div>
 	
 </h:body>

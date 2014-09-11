@@ -11,42 +11,25 @@
 	
 	
 	<ui:composition template="/WEB-INF/templates/_template.xhtml">
-	
-		<ui:define name="corpo1">
-			
-			<p:contentFlow rendered="true" styleClass="con-img" style="height:500px" value="#{imageViewBean.images}" var="image">
-			    <p:graphicImage library="imagens" name="#{image}" styleClass="content" />
-			    <div class="caption">#{image}</div>
-			</p:contentFlow>
 		
-		</ui:define>
-	
-		<ui:define name="corpo2">
+		<ui:define name="titulo">CoAutores - Login</ui:define>
+		
+		<ui:define name="corpo">
 			
-			<div class="login">
-				<h:form id="login">
-				<p:fieldset legend="Login">
-					
-					<h:panelGrid columns="1">
+			<div class="login col-md-12">
+				<h:form id="login" styleClass="col-md-offset-4 col-md-4">
+					<h:panelGrid styleClass="panel-geral" columns="2">
+						
 						<p:outputLabel value="Login" for="login"/>
 						<p:inputText value="#{loginBean.usuario.login}" id="login"/>
 						
 						<p:outputLabel value="Senha:" for="senha"/>
 						<p:inputText value="#{loginBean.usuario.senha}" type="password" id="senha"/>
 						
-						<p:outputLabel/>
 						<p:commandButton action="#{loginBean.autentica}" value="Entrar"/>
+						<p:commandLink value="Cadastre-se"/>
 						
-						<p:outputLabel/>
-						<p:commandLink value="Esqueceu o login?"/>
-						
-						<p:commandLink value="Esqueceu a senha?"/>
-						
-						<p:outputLabel/>
-						<p:commandButton value="Cadastre-se"/>
-						
-					</h:panelGrid>
-				</p:fieldset>	
+					</h:panelGrid>	
 				</h:form>
 			</div>
 			
