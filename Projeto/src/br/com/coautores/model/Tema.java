@@ -1,17 +1,22 @@
 package br.com.coautores.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
-public class Tema {
+public class Tema implements Serializable {
 	
 	@Id @GeneratedValue
 	private Long id;
 	
-	@Column(name="cstema")
+	@Column(name="nome", nullable=false) @Length(min=5, message="{tema.nome.length}") @NotEmpty(message="{tema.nome.null}")
 	private String nome;
 
 	public Long getId() {

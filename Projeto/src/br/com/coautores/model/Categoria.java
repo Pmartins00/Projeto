@@ -1,17 +1,22 @@
 package br.com.coautores.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
-public class Categoria {
+public class Categoria implements Serializable {
 	
 	@Id @GeneratedValue
 	private Long id;
 	
-	@Column(name="csnome")
+	@Column(name="csnome", nullable=false) @Length(min=5, message="{categoria.nome.length}") @NotEmpty(message="{categoria.nome.null}")
 	private String nome;
 
 	public Long getId() {

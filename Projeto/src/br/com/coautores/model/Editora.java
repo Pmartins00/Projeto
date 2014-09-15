@@ -1,5 +1,7 @@
 package br.com.coautores.model;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,19 +9,22 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
-public class Editora {
+public class Editora implements Serializable {
 	
 	@Id @GeneratedValue
 	private Long id;
 	
-	@Column(name="csnome")
+	@Column(name="nome", nullable=false) @Length(min=5, message="{editora.nome.length}") @NotEmpty(message="{editora.nome.null}")
 	private String nome;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	private Endereco endereco;
 	
-	@Column(name="cstelefone")
+	@Column(name="telefone")
 	private String telefone;
 	
 	public Editora() {

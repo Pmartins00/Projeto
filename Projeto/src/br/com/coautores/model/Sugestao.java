@@ -1,6 +1,7 @@
 package br.com.coautores.model;
 
-import java.util.Calendar;
+import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -8,24 +9,29 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-public class Sugestao {
+public class Sugestao implements Serializable {
 	
 	@Id @GeneratedValue
 	private Long id;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL) @Length(min=5, message="{sugestao.usuario.length}") @NotEmpty(message="{sugestao.usuario.null}")
 	private Usuario usuario;
 	
-	@Column(name="cstexto")
+	@Column(name="texto")
 	private String texto;
 	
-	@Column(name="cddataCriacao")
-	private Calendar dataCriacao;
+	@Column(name="dataCriacao") @Temporal(TemporalType.TIMESTAMP)
+	private Date dataCriacao;
 	
-	@Column(name="cddataUpdate")
-	private Calendar dataUpdate;
+	@Column(name="dataUpdate") @Temporal(TemporalType.TIMESTAMP)
+	private Date dataUpdate;
 	
 	public Sugestao() {
 		
@@ -55,19 +61,19 @@ public class Sugestao {
 		this.texto = texto;
 	}
 
-	public Calendar getDataCriacao() {
+	public Date getDataCriacao() {
 		return dataCriacao;
 	}
 
-	public void setDataCriacao(Calendar dataCriacao) {
+	public void setDataCriacao(Date dataCriacao) {
 		this.dataCriacao = dataCriacao;
 	}
 
-	public Calendar getDataUpdate() {
+	public Date getDataUpdate() {
 		return dataUpdate;
 	}
 
-	public void setDataUpdate(Calendar dataUpdate) {
+	public void setDataUpdate(Date dataUpdate) {
 		this.dataUpdate = dataUpdate;
 	}
 	

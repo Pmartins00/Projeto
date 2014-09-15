@@ -1,6 +1,8 @@
 package br.com.coautores.model;
 
-import java.util.Calendar;
+import java.io.Serializable;
+import java.util.Date;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,27 +10,32 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-public class Paragrafo {
+public class Paragrafo implements Serializable {
 	
 	@Id @GeneratedValue
 	private Long id;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL) @Length(min=5, message="{paragrafo.usuario.length}") @NotEmpty(message="{paragrafo.usuario.null}")
 	private Usuario usuario;
 	
-	@ManyToOne()
+	@ManyToOne() @NotEmpty(message="{paragrafo.texto.null}")
 	private Texto texto;
 	
-	@Column(name="csconteudo")
+	@Column(name="conteudo", nullable=false) @Length(min=5, message="{paragrafo.conteudo.length}") @NotEmpty(message="{paragrafo.conteudo.null}")
 	private String conteudo;
 	
-	@Column(name="cddataCriacao")
-	private Calendar dataCriacao;
+	@Column(name="dataCriacao") @Temporal(TemporalType.TIMESTAMP)
+	private Date dataCriacao;
 	
-	@Column(name="cddataUpdate")
-	private Calendar dataUpdate;
+	@Column(name="dataUpdate") @Temporal(TemporalType.TIMESTAMP)
+	private Date dataUpdate;
 
 	public Long getId() {
 		return id;
@@ -62,19 +69,19 @@ public class Paragrafo {
 		this.conteudo = conteudo;
 	}
 
-	public Calendar getDataCriacao() {
+	public Date getDataCriacao() {
 		return dataCriacao;
 	}
 
-	public void setDataCriacao(Calendar dataCriacao) {
+	public void setDataCriacao(Date dataCriacao) {
 		this.dataCriacao = dataCriacao;
 	}
 
-	public Calendar getDataUpdate() {
+	public Date getDataUpdate() {
 		return dataUpdate;
 	}
 
-	public void setDataUpdate(Calendar dataUpdate) {
+	public void setDataUpdate(Date dataUpdate) {
 		this.dataUpdate = dataUpdate;
 	}
 	

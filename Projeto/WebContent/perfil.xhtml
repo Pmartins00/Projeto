@@ -20,7 +20,6 @@
 			<div class="col-md-4">
 
 				<div class="panel-interno">
-					<p:outputLabel value="#{loginBean.usuario.imagem}"/>
 					
 					<p:panelGrid id="panel-dados" styleClass="panel-geral" columns="2" rules="groups"
 						columnClasses="pr30, pr70" align="center">
@@ -28,7 +27,7 @@
 						<p:outputLabel styleClass="t" value="Meus Dados" />
 						<p:commandButton value="Editar Dados" type="button" onclick="PF('editar_user').show();" />
 
-						<p:graphicImage name="#{loginBean.usuario.imagem}" library="imagens/usuarios" width="100" height="100" />
+						<p:graphicImage title="#{loginBean.usuario.imagem}" name="#{loginBean.usuario.imagem}" library="imagens/usuarios" width="100" height="100" />
 						<p:commandButton value="Editar Imagem" type="button" onclick="PF('editar_imagem').show();" />
 						
 						<p:outputLabel value="Login" />
@@ -116,9 +115,7 @@
 					<h:panelGrid styleClass="panel-geral" columns="2" rules="groups" columnClasses="pr20, pr80" align="center">
 						
 						<p:outputLabel value="Nome:" for="nome"/>
-						<p:inputText validatorMessage="Nome do usuário deve conter no minimo 5 caracteres!" requiredMessage="Nome Obrigatório!" required="true" value="#{loginBean.usuario.nome}" id="nome">
-							<f:validateLength minimum="5"/>
-						</p:inputText> 
+						<p:inputText requiredMessage="Nome Obrigatório!" required="true" value="#{loginBean.usuario.nome}" id="nome"/> 
 						
 						<p:outputLabel value="E-mail" for="email"/>
 						<p:inputText validatorMessage="E-mail Inválido" requiredMessage="E-mail Obrigatório!" required="true" value="#{loginBean.usuario.email}" type="email" id="email"> 
@@ -126,9 +123,7 @@
 						</p:inputText>
 						
 						<p:outputLabel value="Login:" for="login_cadastro"/>
-						<p:inputText validatorMessage="Login do usuário deve conter no minimo 5 caracteres!" requiredMessage="Login Obrigatório!" required="true" value="#{loginBean.usuario.login}" id="login_cadastro">
-							<f:validateLength minimum="5"/>
-						</p:inputText>
+						<p:inputText requiredMessage="Login Obrigatório!" required="true" value="#{loginBean.usuario.login}" id="login_cadastro"/>
 							
 						<p:outputLabel value="Senha:" for="senha_cadastro"/>
 						<p:inputText validatorMessage="Senha do usuário deve conter no minimo 5 caracteres!" requiredMessage="Senha Obrigatório!" required="true" value="#{cadastroBean.senha}" type="password" id="senha_cadastro">

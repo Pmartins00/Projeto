@@ -5,10 +5,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.Serializable;
 
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
+import javax.inject.Named;
 import javax.servlet.ServletContext;
 
 import org.primefaces.event.FileUploadEvent;
@@ -16,8 +17,8 @@ import org.primefaces.event.FileUploadEvent;
 import br.com.coautores.dao.DAO;
 import br.com.coautores.model.Usuario;
 
-@ManagedBean(name="fileBean")
-public class FileBean {
+@Named("fileBean")
+public class FileBean implements Serializable {
 	
 	private String arquivo = new String();
 	

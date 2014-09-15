@@ -1,26 +1,28 @@
 package br.com.coautores.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Endereco {
+public class Endereco implements Serializable {
 	
 	@Id @GeneratedValue
 	private Long id;
 	
-	@Column(name="csrua")
+	@Column(name="rua")
 	private String rua;
 	
-	@Column(name="csnumero")
+	@Column(name="numero")
 	private String numero;
 	
-	@Column(name="cscidade")
+	@Column(name="cidade")
 	private String cidade;
 	
-	@Column(name="csuf")
+	@Column(name="uf")
 	private String uf;
 
 	public Long getId() {

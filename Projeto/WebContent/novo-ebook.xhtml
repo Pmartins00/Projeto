@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<h:head></h:head>
+<h:body>
+	
+	
+	<ui:composition template="/WEB-INF/templates/_template.xhtml">
+		
+		<ui:define name="titulo">CoAutores - Novo E-book</ui:define>
+		
+		<ui:define name="corpo">
+			<div class="col-md-4">
+
+				<div class="panel-interno">
+					
+					<p:outputLabel styleClass="t" value="Foto da Capa" />
+					
+					<h:form id="form-imagem">
+					<p:growl id="messages" showDetail="true" />
+					
+						<h:panelGrid style="width:100%;" columns="1" align="center">
+						
+							<p:fileUpload label="Escolha o Arquivo" fileUploadListener="#{fileBean.usuario}" mode="advanced" update="@form messages" auto="true" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+			    			<p:fileUpload label="Escolha a Imagem" fileUploadListener="#{fileBean.usuario}" mode="advanced" update="@form messages" auto="true" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+			    			<p:graphicImage title="Imagem da Capa" style="margin-top:10px;" library="imagens/usuarios" width="200" height="200" />
+			    			
+			    		</h:panelGrid>
+		    		
+		 			</h:form>
+		 			
+				</div>
+
+			</div>
+
+			<div class="col-md-8">
+
+				<div class="panel-interno">
+
+					<p:outputLabel styleClass="t" value="Cadastrar E-book" />
+					
+					<h:form>
+						<p:growl id="growl" showDetail="true" sticky="false" />
+						<h:panelGrid styleClass="panel-geral" columns="2" rules="groups" columnClasses="pr20, pr80" align="center">
+							
+							<p:outputLabel value="Nome:" for="nome"/>
+							<p:inputText required="true" requiredMessage="Campo nome obrigatório!" value="#{ebookBean.ebook.nome}" id="nome" placeholder="Nome"/>
+							
+							<p:outputLabel value="Autores:" for="autores"/>
+							<p:inputText required="true" requiredMessage="Campo autores obrigatório!" value="#{ebookBean.ebook.autores}" id="autores" placeholder="Autores"/>
+							
+							<p:outputLabel value="Categoria:" for="categoria"/>
+							<p:selectOneMenu required="true" requiredMessage="Campo categoria obrigatório!" id="categoria" style="width:100%;">
+								<f:selectItem value="#{null}" itemLabel="Escolha a Categoria"/>
+							</p:selectOneMenu>
+							
+							<p:outputLabel value="Tema:" for="tema"/>
+							<p:selectOneMenu required="true" requiredMessage="Campo tema obrigatório!" id="tema" style="width:100%;">
+								<f:selectItem value="#{null}" itemLabel="Escolha o Tema"/>
+							</p:selectOneMenu>
+							
+							<p:outputLabel value="Idioma:" for="idioma"/>
+							<p:selectOneMenu required="true" requiredMessage="Campo idioma obrigatório!" id="idioma" style="width:100%;">
+								<f:selectItem value="#{null}" itemLabel="Escolha a Idioma"/>
+							</p:selectOneMenu>
+							
+							<p:outputLabel value="Editora:" for="editora"/>
+							<p:inputText required="true" requiredMessage="Campo editora obrigatório!" value="#{ebookBean.editora.id}" id="editora" placeholder="Clique para selecionar a editora!"/>
+							
+							<p:outputLabel value="Data Criação:" for="dataCriacao"/>
+							<p:calendar required="true" requiredMessage="Campo data criação obrigatório!" id="dataCriacao" value="#{ebookBean.ebook.dataCriacao}" pattern="dd/MM/yyyy" navigator="true" locale="pt"/>
+						</h:panelGrid>
+						
+						<div class="botao">
+							<p:commandButton type="buttom" styleClass="btn02" value="Cancelar"/>
+							<p:commandButton styleClass="btn03" update="@form" action="#{ebookBean.adiciona}" value="Salvar"/>
+						</div>
+						
+					</h:form>
+				
+				</div>
+
+			</div>
+		</ui:define>
+		
+	</ui:composition>
+
+</h:body>
+</html>

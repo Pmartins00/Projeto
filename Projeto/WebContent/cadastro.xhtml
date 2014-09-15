@@ -22,9 +22,7 @@
 					<h:panelGrid styleClass="panel-geral" columns="2" rules="groups" columnClasses="pr20, pr40, pr40" align="center">
 						
 						<p:outputLabel value="Nome:" for="nome"/>
-						<p:inputText validatorMessage="Nome do usuário deve conter no minimo 5 caracteres!" requiredMessage="Nome Obrigatório!" required="true" value="#{cadastroBean.usuario.nome}" id="nome">
-							<f:validateLength minimum="5"/>
-						</p:inputText> 
+						<p:inputText requiredMessage="Nome Obrigatório!" required="true" value="#{cadastroBean.usuario.nome}" id="nome"/>
 						
 						<p:outputLabel value="E-mail" for="email"/>
 						<p:inputText validatorMessage="E-mail Inválido" requiredMessage="E-mail Obrigatório!" required="true" value="#{cadastroBean.usuario.email}" type="email" id="email"> 
@@ -32,14 +30,10 @@
 						</p:inputText>
 						
 						<p:outputLabel value="Login:" for="login_cadastro"/>
-						<p:inputText validatorMessage="Login do usuário deve conter no minimo 5 caracteres!" requiredMessage="Login Obrigatório!" required="true" value="#{cadastroBean.usuario.login}" id="login_cadastro">
-							<f:validateLength minimum="5"/>
-						</p:inputText>
+						<p:inputText requiredMessage="Login Obrigatório!" required="true" value="#{cadastroBean.usuario.login}" id="login_cadastro"/>
 						
 						<p:outputLabel value="Senha:" for="senha_cadastro"/>
-						<p:inputText validatorMessage="Senha do usuário deve conter no minimo 5 caracteres!" requiredMessage="Senha Obrigatório!" required="true" value="#{cadastroBean.usuario.senha}" type="password" id="senha_cadastro">
-							<f:validateLength minimum="5"/>
-						</p:inputText>
+						<p:inputText validatorMessage="Senha do usuário deve conter no minimo 5 caracteres!" requiredMessage="Senha Obrigatório!" required="true" value="#{cadastroBean.usuario.senha}" type="password" id="senha_cadastro"/>
 						
 						<p:commandButton update="@form" action="#{cadastroBean.cadastra}" value="Cadastrar"/>
 						

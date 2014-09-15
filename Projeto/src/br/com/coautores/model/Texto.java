@@ -1,48 +1,58 @@
 package br.com.coautores.model;
 
-import java.util.Calendar;
+import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+
+import br.com.cooautores.enuns.Enuns.TextoStatus;
 
 @Entity
-public class Texto {
+public class Texto implements Serializable {
 	
 	@Id @GeneratedValue
 	private Long id;
 	
-	@Column(name="cstitulo")
+	@Column(name="titulo", nullable=false) @Length(min=5, message="{texto.titulo.length}") @NotEmpty(message="{texto.titulo.null}")
 	private String titulo;
 	
-	@Column(name="csimagem")
+	@Column(name="imagem")
 	private String imagem;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL) @Length(min=5, message="{texto.categoria.length}") @NotEmpty(message="{texto.categoria.null}")
 	private Categoria categoria;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL) @Length(min=5, message="{texto.tema.length}") @NotEmpty(message="{texto.tema.null}")
 	private Tema tema;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL) @Length(min=5, message="{texto.usuario.length}") @NotEmpty(message="{texto.usuario.null}")
 	private Usuario usuario;
 	
 	@OneToMany(cascade=CascadeType.PERSIST, mappedBy="texto")
 	private List<Paragrafo> paragrafo;
 	
-	@Column(name="cbstatus")
-	private boolean status;
+	@Column(name="status") @Enumerated(EnumType.STRING)
+	private TextoStatus status;
 	
-	@Column(name="cddataCriacao")
-	private Calendar dataCriacao;
+	@Column(name="dataCriacao") @Temporal(TemporalType.TIMESTAMP)
+	private Date dataCriacao;
 	
-	@Column(name="cddataUpdate")
-	private Calendar dataUpdate;
+	@Column(name="dataUpdate") @Temporal(TemporalType.TIMESTAMP)
+	private Date dataUpdate;
 
 	public Long getId() {
 		return id;
@@ -92,27 +102,27 @@ public class Texto {
 		this.paragrafo = paragrafo;
 	}
 
-	public boolean isStatus() {
+	public TextoStatus isStatus() {
 		return status;
 	}
 
-	public void setStatus(boolean status) {
+	public void setStatus(TextoStatus status) {
 		this.status = status;
 	}
 
-	public Calendar getDataCriacao() {
+	public Date getDataCriacao() {
 		return dataCriacao;
 	}
 
-	public void setDataCriacao(Calendar dataCriacao) {
+	public void setDataCriacao(Date dataCriacao) {
 		this.dataCriacao = dataCriacao;
 	}
 
-	public Calendar getDataUpdate() {
+	public Date getDataUpdate() {
 		return dataUpdate;
 	}
 
-	public void setDataUpdate(Calendar dataUpdate) {
+	public void setDataUpdate(Date dataUpdate) {
 		this.dataUpdate = dataUpdate;
 	}
 

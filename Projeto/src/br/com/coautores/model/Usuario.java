@@ -7,14 +7,19 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+
+import br.com.cooautores.enuns.Enuns.UsuarioPerfil;
+import br.com.cooautores.enuns.Enuns.UsuarioStatus;
 
 @Entity
 public class Usuario implements Serializable {
@@ -22,32 +27,32 @@ public class Usuario implements Serializable {
 	@Id @GeneratedValue
 	private Long id;
 	
-	@Column(name="cslogin", unique=true, nullable=false) @Length(min=5) @NotNull
+	@Column(name="login", unique=true, nullable=false) @Length(min=5, message="{usuario.login.length}") @NotEmpty(message="{usuario.login.null}")
 	private String login;
 	
-	@Column(name="cssenha", nullable=false) @Length(min=5) @NotNull
+	@Column(name="senha", nullable=false) @Length(min=5, message="{usuario.senha.length}") @NotEmpty(message="{usuario.senha.null}")
 	private String senha;
 	
-	@Column(name="csnome", nullable=false) @Length(min=5) @NotNull
+	@Column(name="nome", nullable=false) @Length(min=5, message="{usuario.nome.length}") @NotEmpty(message="{usuario.login.null}")
 	private String nome;
 	
-	@Column(name="csemail", unique=true, nullable=false) @Length(min=5) @NotNull
+	@Column(name="email", unique=true, nullable=false) @Length(min=5, message="{usuario.email.length}") @NotEmpty(message="{usuario.email.null}")
 	private String email;
 	
-	@Column(name="csimagem")
+	@Column(name="imagem")
 	private String imagem;
 	
-	@Column(name="cddataNascimento") @Temporal(TemporalType.DATE)
+	@Column(name="dataNascimento") @Temporal(TemporalType.DATE)
 	private Date dataNascimento;
 	
-	@Column(name="cscelular")
+	@Column(name="celular")
 	private String celular;
 	
-	@Column(name="csperfil")
-	private String perfil;
+	@Column(name="perfil") @Enumerated(EnumType.STRING)
+	private UsuarioPerfil perfil;
 	
-	@Column(name="cbstatus")
-	private boolean status;
+	@Column(name="status") @Enumerated(EnumType.STRING)
+	private UsuarioStatus status;
 	
 	@OneToMany(cascade=CascadeType.PERSIST)
 	private List<Ebook> ebook;
@@ -119,11 +124,11 @@ public class Usuario implements Serializable {
 		this.celular = celular;
 	}
 
-	public String getPerfil() {
+	public UsuarioPerfil getPerfil() {
 		return perfil;
 	}
 
-	public void setPerfil(String perfil) {
+	public void setPerfil(UsuarioPerfil perfil) {
 		this.perfil = perfil;
 	}
 
@@ -143,11 +148,11 @@ public class Usuario implements Serializable {
 		this.tema = tema;
 	}
 
-	public boolean isStatus() {
+	public UsuarioStatus isStatus() {
 		return status;
 	}
 
-	public void setStatus(boolean status) {
+	public void setStatus(UsuarioStatus status) {
 		this.status = status;
 	}
 	

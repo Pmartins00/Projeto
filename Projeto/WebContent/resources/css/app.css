@@ -89,7 +89,7 @@
 }
 
 .botao {
-	margin-top: 10px;
+	margin-top: 20px;
 	float: right;
 }
 
@@ -99,6 +99,7 @@
 	color: #FFF;
 	font-weight: bold;
 	text-shadow: none;
+	margin-right: 10px;
 }
 
 .botao .btn03 {
@@ -107,6 +108,7 @@
 	color: #FFF;
 	font-weight: bold;
 	text-shadow: none;
+	margin-right: 10px;
 }
 
 /*************Menu*************/
