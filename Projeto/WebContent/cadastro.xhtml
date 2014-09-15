@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:body>
+
+	<ui:composition template="/WEB-INF/templates/_template.xhtml">
+
+		<ui:define name="titulo">CoAutores - Cadastro</ui:define>
+		
+		<ui:define name="corpo">
+		
+			<p:outputLabel styleClass="t" value="Cadastre-se"/>
+			<div class=" cadastro col-md-12">
+				
+				<h:form id="cadastro" styleClass="col-md-offset-2 col-md-8">
+					<p:growl id="growl" showDetail="true" sticky="false" />
+					<h:panelGrid styleClass="panel-geral" columns="2" rules="groups" columnClasses="pr20, pr40, pr40" align="center">
+						
+						<p:outputLabel value="Nome:" for="nome"/>
+						<p:inputText validatorMessage="Nome do usuário deve conter no minimo 5 caracteres!" requiredMessage="Nome Obrigatório!" required="true" value="#{cadastroBean.usuario.nome}" id="nome">
+							<f:validateLength minimum="5"/>
+						</p:inputText> 
+						
+						<p:outputLabel value="E-mail" for="email"/>
+						<p:inputText validatorMessage="E-mail Inválido" requiredMessage="E-mail Obrigatório!" required="true" value="#{cadastroBean.usuario.email}" type="email" id="email"> 
+							<f:validateRegex pattern="^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$"></f:validateRegex>
+						</p:inputText>
+						
+						<p:outputLabel value="Login:" for="login_cadastro"/>
+						<p:inputText validatorMessage="Login do usuário deve conter no minimo 5 caracteres!" requiredMessage="Login Obrigatório!" required="true" value="#{cadastroBean.usuario.login}" id="login_cadastro">
+							<f:validateLength minimum="5"/>
+						</p:inputText>
+						
+						<p:outputLabel value="Senha:" for="senha_cadastro"/>
+						<p:inputText validatorMessage="Senha do usuário deve conter no minimo 5 caracteres!" requiredMessage="Senha Obrigatório!" required="true" value="#{cadastroBean.usuario.senha}" type="password" id="senha_cadastro">
+							<f:validateLength minimum="5"/>
+						</p:inputText>
+						
+						<p:commandButton update="@form" action="#{cadastroBean.cadastra}" value="Cadastrar"/>
+						
+					</h:panelGrid>	
+				</h:form>
+			</div>
+			
+		</ui:define>
+		
+	</ui:composition>
+
+</h:body>
+</html>

@@ -7,9 +7,6 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-<head>
-	
-</head>
 <h:head>
 	
 	<title><ui:insert name="titulo">Co-Autores</ui:insert></title>
@@ -25,6 +22,7 @@
 	
 	<h:outputScript name="bootstrap.js" library="dist/js"/>
 	<h:outputScript name="locale.js" library="js"/>
+	<h:outputScript name="app.js" library="js"/>
 	<h:outputScript name="jsf.js" library="javax.faces" target="head"/>
 	
 </h:head>
@@ -53,7 +51,7 @@
 				<p:outputLabel rendered="#{loginBean.logado}" id="not" />
 			</div>
 			<div class="col-md-1">
-				<a href="perfil.xhtml"><p:outputLabel rendered="#{loginBean.logado}" id="perfil" /></a>
+				<a href="perfil.xhtml"><p:graphicImage rendered="#{loginBean.logado}" id="perfil" name="#{loginBean.usuario.imagem}" library="imagens/usuarios" /></a>
 				<a href="login.xhtml"><p:outputLabel rendered="#{!loginBean.logado}" id="log" value="Login" /></a>
 			</div>
 		</div>

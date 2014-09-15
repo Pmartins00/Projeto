@@ -24,4 +24,17 @@ public class UsuarioDAO implements Serializable {
 		
 		return encontrado;
 	}
+	
+	public Usuario busca(Usuario usuario) {
+		
+		
+		Query query = em.createQuery("from Usuario u where u.login = :pLogin and u.senha = :pSenha");
+		query.setParameter("pLogin", usuario.getLogin());
+		query.setParameter("pSenha", usuario.getSenha());
+		
+		Usuario user = (Usuario) query.getSingleResult();
+		
+		return user;
+	}
+
 }

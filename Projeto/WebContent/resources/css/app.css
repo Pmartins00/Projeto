@@ -20,6 +20,10 @@
 	text-align: center;
 }
 
+#form-imagem {
+	text-align: center;
+}
+
 /*************Paineis*************/
 
 .panel-geral {
@@ -35,6 +39,11 @@
 .t {
 	font-size: 25px;
 	color: #A7A7B7;
+}
+
+.valida {
+	color: red;
+	font-weight: bold;
 }
 
 .panel-geral img {
@@ -63,6 +72,11 @@
 
 .login {
 	margin: 200px 0px 200px 0px;
+	text-align: center;
+}
+
+.cadastro {
+	margin: 130px 0px 150px 0px;
 	text-align: center;
 }
 

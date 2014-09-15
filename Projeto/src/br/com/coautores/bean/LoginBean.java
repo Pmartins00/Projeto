@@ -2,6 +2,7 @@ package br.com.coautores.bean;
 import java.io.Serializable;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -20,14 +21,35 @@ public class LoginBean implements Serializable {
 	
 	public String autentica() {
 		
-		boolean aut = dao.autentica(this.usuario);
+		FacesContext context = FacesContext.getCurrentInstance();
 		
-		if (aut) {
-			System.out.println("sim");
-			return "home?faces-redirect=true";
-		} else {
+		try {
+			boolean aut = dao.autentica(this.usuario);
+			
+			if (aut) {
+				System.out.println("sim");
+				
+				this.usuario = dao.busca(this.usuario);
+				
+				if (this.usuario.getImagem() == null) {
+					this.usuario.setImagem("user.jpg");
+				}
+				context.addMessage(null, new FacesMessage("Sucesso", "Login efetuado com sucesso!"));
+				
+				return "home?faces-redirect=true";
+			} else {
+				this.usuario = new Usuario();
+				System.out.println("nao");
+				
+				context.addMessage(null, new FacesMessage("Erro", "Usuário ou senha inválidos!"));
+				return "login?faces-redirect=true";
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			context.addMessage(null, new FacesMessage("Erro", "Usuário ou senha inválidos!"));
 			return "login?faces-redirect=true";
 		}
+		
 		
 	}
 	
@@ -39,6 +61,14 @@ public class LoginBean implements Serializable {
 		return this.usuario.getLogin() != null;
 	}
 	
+	public boolean isImagem() {
+		if (this.usuario.getImagem() != null) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 	public String page() {
 		return "login?faces-redirect=true";
 	}
@@ -46,6 +76,10 @@ public class LoginBean implements Serializable {
 	public String logout() {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		return "login?faces-redirect=true";
+	}
+	
+	public String cadastro() {
+		return "cadastro?faces-redirect=true";
 	}
 
 }

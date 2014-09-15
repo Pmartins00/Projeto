@@ -18,19 +18,23 @@
 			
 			<div class="login col-md-12">
 				<h:form id="login" styleClass="col-md-offset-4 col-md-4">
+					<p:growl id="growl" showDetail="true" sticky="false" />
 					<h:panelGrid styleClass="panel-geral" columns="2">
 						
-						<p:outputLabel value="Login" for="login"/>
-						<p:inputText value="#{loginBean.usuario.login}" id="login"/>
+						<p:outputLabel value="Login:" for="login_form"/>
+						<p:inputText validatorMessage="Login do usuário deve conter no minimo 5 caracteres!" requiredMessage="Login Obrigatório!" required="true" value="#{loginBean.usuario.login}" id="login_form">
+							<f:validateLength minimum="5"/>
+						</p:inputText>
 						
 						<p:outputLabel value="Senha:" for="senha"/>
-						<p:inputText value="#{loginBean.usuario.senha}" type="password" id="senha"/>
+						<p:inputText validatorMessage="Senha do usuário deve conter no minimo 5 caracteres!" requiredMessage="Senha Obrigatório!" required="true" value="#{loginBean.usuario.senha}" type="password" id="senha">
+							<f:validateLength minimum="5"/>
+						</p:inputText>
 						
-						<p:commandButton action="#{loginBean.autentica}" value="Entrar"/>
-						<p:commandLink value="Cadastre-se"/>
-						
+						<p:commandButton update="@form" action="#{loginBean.autentica}" value="Entrar"/>
 					</h:panelGrid>	
 				</h:form>
+				<p:commandLink action="#{loginBean.cadastro}" value="Cadastre-se"/>
 			</div>
 			
 		</ui:define>

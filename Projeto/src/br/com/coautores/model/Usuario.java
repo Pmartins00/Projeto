@@ -1,15 +1,20 @@
 package br.com.coautores.model;
 
-import java.io.File;
 import java.io.Serializable;
-import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 public class Usuario implements Serializable {
@@ -17,23 +22,23 @@ public class Usuario implements Serializable {
 	@Id @GeneratedValue
 	private Long id;
 	
-	@Column(name="cslogin")
+	@Column(name="cslogin", unique=true, nullable=false) @Length(min=5) @NotNull
 	private String login;
 	
-	@Column(name="cssenha")
+	@Column(name="cssenha", nullable=false) @Length(min=5) @NotNull
 	private String senha;
 	
-	@Column(name="csnome")
+	@Column(name="csnome", nullable=false) @Length(min=5) @NotNull
 	private String nome;
 	
-	@Column(name="csemail")
+	@Column(name="csemail", unique=true, nullable=false) @Length(min=5) @NotNull
 	private String email;
 	
 	@Column(name="csimagem")
-	private File imagem;
+	private String imagem;
 	
-	@Column(name="cddataNascimento")
-	private Calendar dataNascimento;
+	@Column(name="cddataNascimento") @Temporal(TemporalType.DATE)
+	private Date dataNascimento;
 	
 	@Column(name="cscelular")
 	private String celular;
@@ -90,19 +95,19 @@ public class Usuario implements Serializable {
 		this.email = email;
 	}
 
-	public File getImagem() {
+	public String getImagem() {
 		return imagem;
 	}
 
-	public void setImagem(File imagem) {
+	public void setImagem(String imagem) {
 		this.imagem = imagem;
 	}
 
-	public Calendar getDataNascimento() {
+	public Date getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(Calendar dataNascimento) {
+	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 
