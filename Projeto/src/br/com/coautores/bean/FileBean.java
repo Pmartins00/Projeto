@@ -30,12 +30,37 @@ public class FileBean {
 		
 		// Do what you want with the file        
         try {
-            copyFile(event.getFile().getFileName(), event.getFile().getInputstream());
-            loginBean.getUsuario().setImagem(event.getFile().getFileName());
+        	
+        	String filename;
+        	
+        	if (event.getFile().getFileName().indexOf("\\") >= 0) {
+        		System.out.println("internet explorer");
+        		
+        		StringBuffer sb = new StringBuffer(event.getFile().getFileName()); 
+        		sb.reverse(); 
+        		System.out.println(sb);
+        		System.out.println(sb.indexOf("\\"));
+        		
+        		int pos = sb.indexOf("\\");
+        		String aux = sb.substring(0, pos);
+        		System.out.println(aux);
+        		
+        		sb = new StringBuffer(aux); 
+        		sb.reverse();
+        		System.out.println(sb);
+        		
+        		filename = String.valueOf(sb);
+        	} else {
+        		System.out.println("Demais Browsers");
+        		filename =  event.getFile().getFileName();
+        	}
+        	
+            copyFile(filename, event.getFile().getInputstream());
+            loginBean.getUsuario().setImagem(filename);
             
             DAO<Usuario> dao = new DAO<Usuario>(Usuario.class);
             dao.atualiza(loginBean.getUsuario());
-            context.addMessage(null, new FacesMessage("Sucesso", event.getFile().getFileName() + " foi adicionada com sucesso."));
+            context.addMessage(null, new FacesMessage("Sucesso", filename + " foi adicionada com sucesso."));
             
         } catch (IOException e) {
             e.printStackTrace();
@@ -43,18 +68,6 @@ public class FileBean {
             context.addMessage(null, new FacesMessage("Erro", e.getMessage()));
         }
         
-		
-	}
-	
-	public void uploadUsuario() {
-		
-		System.out.println("chegou!");
-		System.out.println(this.arquivo);
-		
-		//File file = new File(this.arquivo);
-		
-		//System.out.println("Nome Arquivo: "+file.getName());
-		//System.out.println("Extenção: "+file.getPath());
 		
 	}
 
