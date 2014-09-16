@@ -10,6 +10,8 @@ import javax.inject.Named;
 import br.com.coautores.dao.DAO;
 import br.com.coautores.model.Usuario;
 import br.com.coautores.bean.LoginBean;
+import br.com.cooautores.enuns.Enuns.UsuarioPerfil;
+import br.com.cooautores.enuns.Enuns.UsuarioStatus;
 
 /**
  * @author Poow
@@ -30,6 +32,8 @@ public class CadastroBean implements Serializable {
 		
 		try {
 			DAO<Usuario> dao = new DAO<Usuario>(Usuario.class);
+			this.usuario.setStatus(UsuarioStatus.ATIVO);
+			this.usuario.setPerfil(UsuarioPerfil.NORMAL);
 			dao.adiciona(this.usuario);
 			context.addMessage(null, new FacesMessage("Sucesso", "Usuario cadastrado com sucesso!"));
 			

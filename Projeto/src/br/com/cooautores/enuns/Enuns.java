@@ -61,4 +61,25 @@ public class Enuns {
 		}
 
 	}
+	
+	public enum Idiomas {
+
+		INGLES("Inglês"), ESPANHOL("Espanhol"), PORTUGUES("Português"), RUSSO("Russo"), FRANCES("Frances"),
+		ALEMAO("Alemão"), JAPONES("Japonês"), ITALIANO("Italiano"), TURCO("Turco"), CHINES("Chinês");
+
+		private String idioma;
+
+		Idiomas(String idioma) {
+			this.idioma = idioma;
+		}
+
+		public String getIdioma() {
+			return idioma;
+		}
+
+		public void setIdioma(String idioma) {
+			this.idioma = idioma;
+		}
+
+	}
 }

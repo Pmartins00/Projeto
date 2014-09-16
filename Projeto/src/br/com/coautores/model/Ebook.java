@@ -5,6 +5,8 @@ import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
@@ -13,6 +15,8 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
+
+import br.com.cooautores.enuns.Enuns.Idiomas;
 
 @Entity
 public class Ebook implements Serializable {
@@ -29,8 +33,8 @@ public class Ebook implements Serializable {
 	@OneToOne(cascade = CascadeType.ALL) @Length(min=5, message="{ebook.editora.length}") @NotEmpty(message="{ebook.editora.null}")
 	private Editora editora;
 	
-	@Column(name="idioma", nullable=false) @Length(min=5, message="{ebook.idioma.length}") @NotEmpty(message="{ebook.idioma.null}")
-	private String idioma;
+	@Column(name="idioma", nullable=false) @Enumerated(EnumType.STRING) @Length(min=5, message="{ebook.idioma.length}") @NotEmpty(message="{ebook.idioma.null}")
+	private Idiomas idioma;
 	
 	@Column(name="imagem")
 	private String imagem;
@@ -89,11 +93,11 @@ public class Ebook implements Serializable {
 		this.editora = editora;
 	}
 
-	public String getIdioma() {
+	public Idiomas getIdioma() {
 		return idioma;
 	}
 
-	public void setIdioma(String idioma) {
+	public void setIdioma(Idiomas idioma) {
 		this.idioma = idioma;
 	}
 

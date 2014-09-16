@@ -9,6 +9,7 @@ import javax.inject.Named;
 
 import br.com.coautores.dao.UsuarioDAO;
 import br.com.coautores.model.Usuario;
+import br.com.cooautores.enuns.Enuns.UsuarioStatus;
 
 @SessionScoped
 @Named("loginBean")
@@ -31,12 +32,22 @@ public class LoginBean implements Serializable {
 				
 				this.usuario = dao.busca(this.usuario);
 				
-				if (this.usuario.getImagem() == null) {
-					this.usuario.setImagem("user.jpg");
+				if (this.usuario.isStatus() == UsuarioStatus.ATIVO) {
+					
+					if (this.usuario.getImagem() == null) {
+						this.usuario.setImagem("user.jpg");
+					}
+					context.addMessage(null, new FacesMessage("Sucesso", "Login efetuado com sucesso!"));
+					return "home?faces-redirect=true";
+					
+				} else {
+					
+					context.addMessage(null, new FacesMessage("Erro", "Usuário esta Inativo no sistema, verificar com administrador!"));
+					this.usuario = new Usuario();
+					return "login?faces-redirect=true";
+					
 				}
-				context.addMessage(null, new FacesMessage("Sucesso", "Login efetuado com sucesso!"));
 				
-				return "home?faces-redirect=true";
 			} else {
 				this.usuario = new Usuario();
 				System.out.println("nao");

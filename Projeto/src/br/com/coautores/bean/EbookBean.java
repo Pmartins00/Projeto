@@ -7,6 +7,7 @@ import javax.inject.Named;
 
 import br.com.coautores.model.Ebook;
 import br.com.coautores.model.Editora;
+import br.com.cooautores.enuns.Enuns.Idiomas;
 
 @RequestScoped
 @Named("ebookBean")
@@ -37,6 +38,10 @@ public class EbookBean {
 
 	public void setEditora(Editora editora) {
 		this.editora = editora;
+	}
+	
+	public Idiomas[] getIdiomas() {
+		return Idiomas.values();
 	}
 	
 }

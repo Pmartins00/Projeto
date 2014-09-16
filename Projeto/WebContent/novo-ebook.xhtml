@@ -68,6 +68,7 @@
 							<p:outputLabel value="Idioma:" for="idioma"/>
 							<p:selectOneMenu required="true" requiredMessage="Campo idioma obrigatório!" id="idioma" style="width:100%;">
 								<f:selectItem value="#{null}" itemLabel="Escolha a Idioma"/>
+								<f:selectItems value="#{ebookBean.idiomas}" var="i" itemValue="#{i}" itemLabel="#{i.idioma}" />
 							</p:selectOneMenu>
 							
 							<p:outputLabel value="Editora:" for="editora"/>
